@@ -11,11 +11,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class AteroidesSevice {
+public class AsteroidesSevice {
     
     private final ObjectMapper objectMapper;
 
-    public AteroidesSevice(ObjectMapper objectMapper) {
+    public AsteroidesSevice(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 
