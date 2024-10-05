@@ -1,4 +1,4 @@
-package Senna_App.senna;
+package senna.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
