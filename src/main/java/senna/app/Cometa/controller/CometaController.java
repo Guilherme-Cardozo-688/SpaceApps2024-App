@@ -1,23 +1,27 @@
 package senna.app.Cometa.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import senna.app.Cometa.app.CometaService;
 import senna.app.Cometa.domain.Cometa;
 
 @RestController
-@RequestMapping("/Comentas")
+@RequestMapping("/cometas")
 public class CometaController {
-    @Autowired
-    private CometaService cometaService;
+    
+    private final CometaService cometaService;
 
-    @GetMapping
-    public List<Cometa> getCometas() {
-        return cometaService.getCometas();
+    @Autowired
+    public CometaController(CometaService cometaService) {
+        this.cometaService = cometaService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Cometa> getCometaById(@PathVariable String id) {
+        return cometaService.getCometaById(id)
+                            .map(ResponseEntity::ok)
+                            .orElse(ResponseEntity.notFound().build());
     }
 }
